@@ -15,7 +15,18 @@
 		<p id="dp"></p>
 		<input type="button" onclick="myInfo()" value="O mnie">
         <br><br>
-        <input type="button" onclick="info()" value="Działa">
-                                                                
+        
+        <h1 onclick="this.innerHTML = 'Ooops!'">Click on this text!</h1>
+        
+        <button onclick="displayDate()">Try it</button>
+      <script>
+
+
+        function displayDate() {
+			document.getElementById("data").innerHTML = Date();
+}
+</script>  
+        <p id="data"></p>       
+		
 	</body>
 </html>
