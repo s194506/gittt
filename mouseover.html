@@ -6,24 +6,36 @@
 style="background-color:#D94A38;width:120px;height:20px;padding:40px;">
 Mouse Over Me</div>
 
-	
-		
-	<h1 onmouseover="mover(this)" onmouseout="mout(this)" 
+			
+<h1 onmouseover="mouseover()" onmouseout="mouseout()" 
 >
-Mouse Over Me</h1>
+Najedz myszką</h1>
+
 	
 
 <script>
 function mover(obj) {
-  obj.innerHTML = "Thank You"
+  obj.innerHTML = "Thank You";
   obj.style.backgroundColor = "#1ec5e5";
 }
 
 function mout(obj) {
-  obj.innerHTML = "Mouse Over Me"
+  obj.innerHTML = "Mouse Over Me";
   obj.style.backgroundColor="#D94A38";
 }
+	
+ function mouseover() {
+	document.getElementById("test").innerHTML = "Thank You";
+	document.getElementById("test").style.backgroundColor="blue";	
+	
+}
+ function mouseout() {
+	document.getElementById("test").innerHTML = "MORE!";
+	document.getElementById("test").style.backgroundColor="pink";	
+	
+}
 </script>
-
+<br> <br> <br>
+	<p id="test"> TESTUJEMY </p>
 </body>
 </html> 
