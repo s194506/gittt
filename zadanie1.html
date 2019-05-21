@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body style="text-align: center; allign padding-left :60px;padding-top:40px">
+        
+        <h2>Pobierz kurs z NBP</h2>
+        <button onclick="getJSON()">Pobierz KURS</button>
+        <p>EUR = <input  id="EUR" size="7"></p>
+        <p>USD = <input  id="USD" size="7"></p>
+        <p>GBP = <input  id="GBP" size="7"></p>
+        <p>CHF = <input  id="CHF" size="7"></p>
+        
+    </body>
+    <script>
+        function getJSON() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                    var parsedData = JSON.parse(this.responseText);     //parce json z API
+                    var currencies = document.querySelectorAll('[id]'); //dodoajemu do tablicy inputy
+
+                        currencies.forEach(function(currency) {
+                       currency.value = parsedData[0].rates.filter(r => r.code === currency.id)[0].mid;
+                        });          
+            };
+        xmlhttp.open("GET", "http://api.nbp.pl/api/exchangerates/tables/a?format=json", true);
+        xmlhttp.send();
+        }
+    </script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Poland</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+        <p>URL: <input type="url"id="urlLink" value="https://raw.githubusercontent.com/stalj/bai/master/04-DataTransfer/poland.json" size="70">  
+             <button onclick="loadJsonFromUrl(urlLink.value)">Wczytaj</button>
+        </p>
+        <br>
+
+		<h1>Official name</h1>
+		<p id = "officialName" > </p>
+        
+		<h1>Capital city</h1>
+		<p id = "capitalName" > </p>
+        
+		<h1>Countries bordering</h1>
+		<p id = "countriesBorderingName"></p>
+        
+        
+		<script>
+            
+            
+            function loadJsonFromUrl(value){
+                    var xmlhttp = new XMLHttpRequest(); //klas z zrealizowanymi metodami dla realizacjia http/xml zapytania
+                
+                    xmlhttp.onreadystatechange = function() {
+                    var jsonData = JSON.parse(this.responseText); //dane z JASON
+                    var countriesBorderingArray = jsonData.borders;
+                    var txt = "";
+                        
+                        document.getElementById("officialName").innerHTML = jsonData.name.official;
+                        document.getElementById("capitalName").innerHTML = jsonData.capital;
+                        
+                        
+                        countriesBorderingArray.forEach(function(countriesBordering){
+                                 txt +=  " " + countriesBordering;
+                        })
+                        document.getElementById("countriesBorderingName").innerHTML = txt;     
+                    };
+                
+                    xmlhttp.open("GET", value);
+                    xmlhttp.send();
+            }
+		</script>
+        
+	</body>
+</html>
